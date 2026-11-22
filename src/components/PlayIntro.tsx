@@ -4,11 +4,12 @@ import { introSlides, profile } from '../data/portfolio';
 import { useScrollLock } from '../hooks/smoothScroll';
 import { useReducedMotionPref } from '../hooks/useMedia';
 import { EASE } from './fx';
+import ProfileArtwork from './ProfileArtwork';
 
 const SLIDE_MS = 3600;
 
 /**
- * "▶ Play Intro": darken → zoom into the portrait → a full-screen highlight reel
+ * "▶ Play Intro": darken → zoom into the abstract profile artwork → a full-screen highlight reel
  * built only from resume facts → fade back to the portfolio.
  */
 export default function PlayIntro({ onClose }: { onClose: () => void }) {
@@ -92,7 +93,7 @@ export default function PlayIntro({ onClose }: { onClose: () => void }) {
       aria-modal="true"
       aria-label="Intro highlight reel"
     >
-      {/* Zoom into the portrait */}
+      {/* Zoom into the abstract profile artwork */}
       <motion.div
         className="absolute inset-0 flex items-end justify-center"
         initial={{ scale: 1, opacity: 1 }}
@@ -100,13 +101,7 @@ export default function PlayIntro({ onClose }: { onClose: () => void }) {
         transition={{ duration: phase === 'zoom' ? 1.7 : 1.2, ease: [0.7, 0, 0.2, 1], times: phase === 'zoom' ? [0, 0.3, 1] : undefined }}
         style={{ transformOrigin: '50% 30%' }}
       >
-        <img
-          src={profile.portrait.src}
-          srcSet={profile.portrait.srcSet}
-          sizes="100vw"
-          alt=""
-          className="h-[88vh] w-auto max-w-none object-contain [mask-image:linear-gradient(to_bottom,black_60%,transparent)]"
-        />
+        <ProfileArtwork />
       </motion.div>
       <div aria-hidden className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_45%,rgba(120,10,25,0.35),transparent_70%)]" />
 

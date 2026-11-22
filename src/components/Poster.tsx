@@ -40,52 +40,44 @@ export function ProjectArt({ project, className = '' }: { project: Project; clas
           </radialGradient>
         </defs>
         <circle cx="290" cy="120" r="130" fill={`url(#g-${project.id})`} />
-        {project.motif === 'shield' && (
-          <g transform="translate(232 40)" fill="none" stroke={a} strokeOpacity="0.85">
-            <path d="M58 0 L116 22 V78 C116 120 90 146 58 160 C26 146 0 120 0 78 V22 Z" strokeWidth="2" />
-            <path d="M58 16 L102 33 V78 C102 111 82 132 58 144 C34 132 14 111 14 78 V33 Z" strokeWidth="1" strokeOpacity="0.4" />
-            {[0, 1, 2, 3, 4].map((i) => (
-              <line key={i} x1="30" x2={i % 2 ? 72 : 86} y1={56 + i * 14} y2={56 + i * 14} strokeWidth="3" strokeLinecap="round" strokeOpacity={0.35 + i * 0.1} />
+        {project.motif === 'book' && (
+          <g transform="translate(205 70)" fill="none" stroke={a} strokeLinecap="round" strokeLinejoin="round">
+            <path d="M8 16 Q44 0 80 20 V155 Q44 135 8 151 Z" strokeWidth="3" />
+            <path d="M80 20 Q116 0 152 16 V151 Q116 135 80 155 Z" strokeWidth="3" />
+            <path d="M24 42 Q49 34 66 44 M24 62 Q49 54 66 64 M96 44 Q119 34 137 42 M96 64 Q119 54 137 62" strokeWidth="2" strokeOpacity="0.7" />
+          </g>
+        )}
+        {project.motif === 'helmet' && (
+          <g transform="translate(205 68)" fill="none" stroke={a} strokeLinecap="round" strokeLinejoin="round">
+            <path d="M16 100 C16 49 48 16 93 16 C137 16 167 48 167 93 L132 93 C123 73 107 64 84 64 C63 64 46 77 40 100 Z" strokeWidth="3" />
+            <path d="M40 100 H168 L151 120 H57 C46 120 40 113 40 100 Z M66 121 L76 150 H112 L124 121" strokeWidth="3" />
+            <path d="M77 36 Q106 32 124 48" strokeWidth="2" strokeOpacity="0.6" />
+          </g>
+        )}
+        {project.motif === 'travel' && (
+          <g transform="translate(202 60)" fill="none" stroke={a} strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="112" cy="56" r="31" strokeWidth="2" strokeOpacity="0.75" />
+            <path d="M15 157 Q57 112 93 145 T173 139 M19 177 Q67 132 102 164 T176 159" strokeWidth="3" />
+            <path d="M23 119 L65 82 L94 105 L134 67 L174 102" strokeWidth="2" strokeDasharray="5 8" />
+            <circle cx="23" cy="119" r="6" fill={a} /><circle cx="174" cy="102" r="6" fill={a} />
+          </g>
+        )}
+        {project.motif === 'air' && (
+          <g transform="translate(198 76)" fill="none" stroke={a} strokeLinecap="round">
+            {[0, 1, 2, 3].map((i) => (
+              <path key={i} d={`M20 ${42 + i * 32} C52 ${20 + i * 32} 72 ${64 + i * 32} 106 ${42 + i * 32} S158 ${20 + i * 32} 182 ${42 + i * 32}`} strokeWidth={i === 0 ? 3 : 2} strokeOpacity={1 - i * 0.16} />
             ))}
-            <path d="M40 124 l12 12 l26 -28" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="52" cy="24" r="4" fill={a} /><circle cx="145" cy="20" r="3" fill={a} /><circle cx="166" cy="174" r="4" fill={a} />
           </g>
         )}
-        {project.motif === 'flow' && (
-          <g fill="none" stroke={a}>
-            <rect x="200" y="56" width="150" height="94" rx="12" strokeWidth="2" strokeOpacity="0.85" />
-            <rect x="214" y="72" width="28" height="20" rx="4" strokeOpacity="0.7" />
-            <line x1="214" x2="330" y1="124" y2="124" strokeWidth="3" strokeOpacity="0.4" strokeDasharray="18 8" />
-            <g transform="translate(176 196)" fontFamily="Inter" fontSize="10" fill={a} stroke="none" letterSpacing="2">
-              <circle cx="16" cy="16" r="16" fill="none" stroke={a} strokeWidth="2" />
-              <path d="M34 16 h46" stroke={a} strokeWidth="2" />
-              <circle cx="96" cy="16" r="16" fill="none" stroke={a} strokeWidth="2" strokeOpacity="0.8" />
-              <path d="M112 8 l38 -22 M112 24 l38 22" stroke={a} strokeWidth="2" strokeOpacity="0.6" />
-              <circle cx="166" cy="-18" r="10" fill={a} fillOpacity="0.8" />
-              <circle cx="166" cy="50" r="10" fill="none" stroke={a} strokeWidth="2" strokeOpacity="0.5" />
-            </g>
-          </g>
-        )}
-        {project.motif === 'tenants' && (
-          <g fill="none" stroke={a}>
-            {[0, 1, 2].map((r) =>
-              [0, 1, 2, 3].map((c) => (
-                <rect
-                  key={`${r}-${c}`}
-                  x={196 + c * 44}
-                  y={50 + r * 44}
-                  width="34"
-                  height="34"
-                  rx="7"
-                  strokeWidth="1.6"
-                  strokeOpacity={0.25 + ((r + c) % 3) * 0.25}
-                  fill={(r + c) % 4 === 0 ? a : 'none'}
-                  fillOpacity="0.25"
-                />
-              )),
-            )}
-            <path d="M188 200 h190" strokeWidth="2" strokeOpacity="0.7" />
-            <path d="M188 214 h190" strokeWidth="1" strokeOpacity="0.35" />
-            <path d="M188 228 h190" strokeWidth="1" strokeOpacity="0.2" />
+        {project.motif === 'calculator' && (
+          <g transform="translate(230 36)" fill="none" stroke={a} strokeLinecap="round" strokeLinejoin="round">
+            <rect x="14" y="12" width="116" height="208" rx="14" strokeWidth="3" />
+            <rect x="29" y="28" width="86" height="42" rx="5" strokeWidth="2" />
+            {[0, 1, 2].map((row) => [0, 1, 2].map((col) => (
+              <rect key={`${row}-${col}`} x={31 + col * 27} y={91 + row * 34} width="16" height="18" rx="4" strokeWidth="2" />
+            )))}
+            <rect x="112" y="91" width="14" height="86" rx="5" strokeWidth="2" />
           </g>
         )}
       </svg>
@@ -98,7 +90,7 @@ export function SeriesMark({ className = '' }: { className?: string }) {
   return (
     <span className={`inline-flex items-center gap-1.5 ${className}`}>
       <svg viewBox="0 0 24 32" className="h-[1.1em] w-auto" aria-hidden>
-        <path d="M18 6c-1.8-1.8-4-2.6-6.5-2.6C7.6 3.4 5 5.6 5 9c0 7.6 14 4.6 14 11.6 0 3-2.8 5-6.4 5-3 0-5.4-1.2-7.2-3" fill="none" stroke="#e5132b" strokeWidth="4" strokeLinecap="round" />
+        <path d="M5 5v14c0 5 2.8 8 7 8s7-3 7-8V5" fill="none" stroke="#e5132b" strokeWidth="4" strokeLinecap="round" />
       </svg>
       <span className="font-sans text-[0.62em] font-bold tracking-[0.36em] text-mist">SERIES</span>
     </span>

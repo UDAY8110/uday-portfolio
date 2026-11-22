@@ -52,7 +52,16 @@ export default function ProjectModal({ project, onClose, onSwitch }: { project: 
           {/* billboard */}
           <div className="relative h-[52vh] min-h-[340px] overflow-hidden sm:rounded-t-2xl">
             <motion.div layoutId={`art-${project.id}`} className="absolute inset-0" transition={{ duration: 0.7, ease: EASE }}>
-              <ProjectArt project={project} />
+              {project.thumbnail ? (
+                <img
+                  src={project.thumbnail}
+                  alt={project.thumbnailAlt ?? `${project.title} project screenshot`}
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <ProjectArt project={project} />
+              )}
             </motion.div>
             <div className="absolute inset-0 bg-gradient-to-t from-ink-2 via-ink-2/30 to-transparent" />
             <button
@@ -72,7 +81,7 @@ export default function ProjectModal({ project, onClose, onSwitch }: { project: 
               <motion.h2
                 id={`title-${project.id}-modal`}
                 layoutId={`title-${project.id}`}
-                className="font-display text-[clamp(2.8rem,8vw,6rem)] leading-[0.86] tracking-wide text-bone"
+                className={`font-display ${project.title.length > 26 ? 'text-[clamp(2rem,7vw,5rem)]' : 'text-[clamp(2.8rem,8vw,6rem)]'} leading-[0.86] tracking-wide text-bone`}
                 transition={{ duration: 0.7, ease: EASE }}
               >
                 {project.title}
@@ -82,7 +91,7 @@ export default function ProjectModal({ project, onClose, onSwitch }: { project: 
 
           <motion.div className="px-5 pb-12 sm:px-10" initial="hidden" animate="show" transition={{ staggerChildren: 0.08, delayChildren: 0.25 }}>
             <motion.div variants={block} className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-mist">
-              <span className="font-semibold text-[#46e3a8]">{project.year}</span>
+              <span className="font-semibold text-[#46e3a8]">{project.status}</span>
               <span className="h-1 w-1 rounded-full bg-smoke" />
               <span>{project.genre}</span>
             </motion.div>
@@ -91,42 +100,44 @@ export default function ProjectModal({ project, onClose, onSwitch }: { project: 
               {project.logline}
             </motion.p>
 
-            {project.github && (
+            {project.website && (
               <motion.div variants={block} className="mt-6 flex flex-wrap gap-3">
                 <Magnetic>
                   <a
-                    href={project.github}
+                    href={project.website}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     data-cursor="link"
                     className="flex min-h-12 items-center gap-2 rounded-md bg-bone px-6 text-[15px] font-bold text-ink transition hover:bg-white"
                   >
-                    GitHub ↗
+                    Visit live website ↗
                   </a>
                 </Magnetic>
               </motion.div>
             )}
 
             {/* impact */}
-            <motion.section variants={block} className="mt-12">
-              <h3 className="mb-4 text-[11px] font-bold uppercase tracking-[0.3em] text-crimson-2">Result / Impact</h3>
-              <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-white/10 sm:grid-cols-3 lg:grid-cols-5">
-                {project.metrics.map((m, i) => (
-                  <motion.div
-                    key={m.label}
-                    className="bg-ink p-4 sm:p-5"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5 + i * 0.07, duration: 0.5, ease: EASE }}
-                  >
-                    <p className="font-display text-4xl leading-none text-bone sm:text-5xl" style={{ color: i === 0 ? project.palette.accent : undefined }}>
-                      {m.value}
-                    </p>
-                    <p className="mt-2 text-xs leading-snug text-mist">{m.label}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.section>
+            {project.metrics.length > 0 && (
+              <motion.section variants={block} className="mt-12">
+                <h3 className="mb-4 text-[11px] font-bold uppercase tracking-[0.3em] text-crimson-2">Result / Impact</h3>
+                <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-white/10 sm:grid-cols-3 lg:grid-cols-5">
+                  {project.metrics.map((m, i) => (
+                    <motion.div
+                      key={m.label}
+                      className="bg-ink p-4 sm:p-5"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.5 + i * 0.07, duration: 0.5, ease: EASE }}
+                    >
+                      <p className="font-display text-4xl leading-none text-bone sm:text-5xl" style={{ color: i === 0 ? project.palette.accent : undefined }}>
+                        {m.value}
+                      </p>
+                      <p className="mt-2 text-xs leading-snug text-mist">{m.label}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.section>
+            )}
 
             <div className="mt-12 grid gap-10 lg:grid-cols-[3fr_2fr]">
               <motion.section variants={block}>
@@ -178,8 +189,19 @@ export default function ProjectModal({ project, onClose, onSwitch }: { project: 
                     className="group relative aspect-video overflow-hidden rounded-xl text-left ring-1 ring-white/10 transition hover:ring-white/30"
                   >
                     <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
-                      <ProjectArt project={p} />
+                      {p.thumbnail ? (
+                        <img
+                          src={p.thumbnail}
+                          alt={p.thumbnailAlt ?? `${p.title} project screenshot`}
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-full object-cover"
+                        />
+                      ) : (
+                        <ProjectArt project={p} />
+                      )}
                     </div>
+                    {p.thumbnail && <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20" />}
                     <div className="absolute inset-x-0 bottom-0 p-4">
                       <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-mist">{p.genre}</p>
                       <p className="font-display text-3xl leading-none tracking-wide text-bone">{p.title}</p>

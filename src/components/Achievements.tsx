@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { achievements, certifications } from '../data/portfolio';
+import { achievements, research } from '../data/portfolio';
 import { EASE, SectionHeading, Tilt } from './fx';
 import { RailButtons } from './Rail';
 
@@ -17,13 +17,11 @@ function Laurel({ side }: { side: 'l' | 'r' }) {
 
 export default function Achievements() {
   const rail = useRef<HTMLDivElement>(null);
-  const issuers = Array.from(new Set(certifications.map((c) => c.issuer)));
-
   return (
     <>
-      <SectionHeading kicker="Awards season" title="Top Moments" />
+      <SectionHeading kicker="Conference & research" title="Research & Recognition" />
 
-      <div className="gutter grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 [perspective:1400px]">
+      <div className="gutter grid gap-4 sm:grid-cols-2 lg:grid-cols-2 [perspective:1400px]">
         {achievements.map((a, i) => (
           <motion.div
             key={a.id}
@@ -46,52 +44,38 @@ export default function Achievements() {
                 <h3 className="relative mt-6 font-display text-[2.1rem] leading-[0.92] tracking-wide text-bone">{a.title}</h3>
                 <p className="relative mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#d9b46a]">{a.org}</p>
                 <p className="relative mt-4 text-[13px] leading-relaxed text-bone/70">{a.detail}</p>
-                {a.link && (
-                  <a
-                    href={a.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    data-cursor="link"
-                    className="relative mt-auto inline-flex min-h-10 items-center gap-1 pt-5 text-xs font-semibold tracking-wide text-bone underline decoration-[#d9b46a]/60 underline-offset-4 hover:decoration-[#d9b46a]"
-                  >
-                    View certificate ↗
-                  </a>
-                )}
               </article>
             </Tilt>
           </motion.div>
         ))}
       </div>
 
-      {/* certifications rail */}
+      {/* research and manuscripts rail */}
       <div className="mt-16">
         <div className="gutter mb-2 flex flex-wrap items-end justify-between gap-2">
           <h3 className="font-sans text-lg font-semibold text-bone sm:text-2xl">
-            Certified <span className="text-mist">· {certifications.length} credentials</span>
+            Research <span className="text-mist">· presented work & manuscripts in development</span>
           </h3>
-          <p className="text-xs text-smoke">{issuers.join(' · ')}</p>
         </div>
         <div className="group/rail relative">
           <div ref={rail} className="rail gutter flex snap-x gap-3 overflow-x-auto py-5">
-            {certifications.map((c, i) => (
-              <motion.a
-                key={c.name}
-                href={c.link}
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="link"
-                className="group relative flex w-[230px] shrink-0 snap-start flex-col justify-between rounded-xl bg-ink-2 p-4 ring-1 ring-white/10 transition hover:-translate-y-1 hover:ring-white/30"
+            {research.map((item, i) => (
+              <motion.article
+                key={item.title}
+                className="group relative flex w-[300px] shrink-0 snap-start flex-col justify-between rounded-xl bg-ink-2 p-4 ring-1 ring-white/10 transition hover:-translate-y-1 hover:ring-white/30 sm:w-[360px]"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: Math.min(i, 6) * 0.04, ease: EASE }}
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-crimson-2">{c.issuer}</span>
-                  <span className="text-sm text-smoke transition group-hover:text-bone">↗</span>
+                  <span className={`text-[10px] font-bold uppercase tracking-[0.18em] ${item.kind === 'presented' ? 'text-[#d9b46a]' : 'text-crimson-2'}`}>
+                    {item.status}
+                  </span>
                 </div>
-                <p className="mt-6 text-sm font-medium leading-snug text-bone">{c.name}</p>
-              </motion.a>
+                <h4 className="mt-6 text-sm font-semibold leading-snug text-bone">{item.title}</h4>
+                <p className="mt-3 text-xs leading-relaxed text-mist">{item.detail}</p>
+              </motion.article>
             ))}
           </div>
           <RailButtons rail={rail} />

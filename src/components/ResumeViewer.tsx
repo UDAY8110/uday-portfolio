@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { achievements, certifications, education, experience, profile, projects, skillCategories } from '../data/portfolio';
+import { achievements, education, experience, leadership, profile, projects, research, skillCategories } from '../data/portfolio';
 import { EASE, Magnetic, SectionHeading } from './fx';
 
 /** THE FULL STORY — a designed resume preview plus view / download actions. */
@@ -22,7 +22,7 @@ export default function ResumeSection({ onView }: { onView: () => void }) {
         <div className="lg:sticky lg:top-28 lg:self-start">
           <p className="font-serif text-3xl italic leading-tight text-bone">Every episode, on one page.</p>
           <p className="mt-3 text-sm leading-relaxed text-mist">
-            Education, training, projects, achievements and {certifications.length} certifications — view it here or take a copy with you.
+            Education, internships, projects, research, leadership and awards — view the resume summary or download the original document.
           </p>
           <div className="mt-6 flex flex-col gap-3">
             <Magnetic className="w-full">
@@ -37,20 +37,20 @@ export default function ResumeSection({ onView }: { onView: () => void }) {
             </Magnetic>
             <Magnetic className="w-full">
               <a
-                href={profile.resumePdf}
-                download="Sushmita_Dasari_Resume.pdf"
+                href={profile.resumeDocx}
+                download="Uday_Kumar_Resume.docx"
                 data-cursor="link"
                 className="glass flex min-h-12 w-full items-center justify-center gap-2 rounded-md px-6 text-[15px] font-semibold text-bone transition hover:bg-white/15"
               >
-                ⤓ Download Resume
+                ⤓ Download Resume (.docx)
               </a>
             </Magnetic>
           </div>
           <dl className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-xl bg-white/10 text-center">
             {[
-              { v: education[0].score.replace('CGPA ', ''), k: 'CGPA' },
-              { v: String(projects.length), k: 'Originals' },
-              { v: String(certifications.length), k: 'Certs' },
+              { v: '8.73', k: 'S4 SGPA' },
+              { v: String(projects.length), k: 'Projects' },
+              { v: String(research.length), k: 'Research' },
             ].map((s) => (
               <div key={s.k} className="bg-ink-2 px-2 py-4">
                 <dd className="font-display text-3xl leading-none text-bone">{s.v}</dd>
@@ -100,13 +100,15 @@ export function ResumeSheet() {
           <a href={`mailto:${profile.email}`} className="block hover:text-bone">
             {profile.email}
           </a>
-          <a href={profile.links.linkedin} target="_blank" rel="noreferrer" className="hover:text-bone">
+          <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-bone">
             LinkedIn ↗
           </a>
           {' · '}
-          <a href={profile.links.github} target="_blank" rel="noreferrer" className="hover:text-bone">
+          <a href={profile.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-bone">
             GitHub ↗
           </a>
+          <a href={`tel:${profile.phone.replace(/[^\d+]/g, '')}`} className="block hover:text-bone">{profile.phone}</a>
+          <span className="block">{profile.location}</span>
         </div>
       </header>
 
@@ -127,7 +129,7 @@ export function ResumeSheet() {
             </div>
           ))}
 
-          <H>Work Experience</H>
+          <H>Experience</H>
           {experience.map((x) => (
             <div key={x.company}>
               <div className="flex flex-wrap justify-between gap-x-3">
@@ -147,12 +149,16 @@ export function ResumeSheet() {
             </div>
           ))}
 
+          <H>Leadership</H>
+          <p className="text-sm font-semibold text-bone">{leadership.role}</p>
+          <p className="mt-1 text-xs leading-relaxed text-mist">{leadership.detail}</p>
+
           <H>Projects</H>
           {projects.map((p) => (
             <div key={p.id} className="mb-3">
               <div className="flex flex-wrap justify-between gap-x-3">
                 <p className="text-sm font-semibold text-bone">{p.title}</p>
-                <p className="text-xs text-smoke">{p.year}</p>
+                <p className="text-xs uppercase text-smoke">{p.status}</p>
               </div>
               <p className="text-xs text-mist">{p.stack.join(', ')}</p>
             </div>
@@ -182,12 +188,16 @@ export function ResumeSheet() {
             ))}
           </ul>
 
-          <H>Certifications</H>
-          <p className="text-xs leading-relaxed text-mist">
-            {Array.from(new Set(certifications.map((c) => c.issuer)))
-              .map((iss) => `${iss}: ${certifications.filter((c) => c.issuer === iss).map((c) => c.name).join(', ')}`)
-              .join(' · ')}
-          </p>
+          <H>Research</H>
+          <div className="space-y-3">
+            {research.map((item) => (
+              <div key={item.title}>
+                <p className="text-xs font-semibold leading-relaxed text-bone">{item.title}</p>
+                <p className="mt-0.5 text-[10px] font-semibold text-crimson-2">{item.status}</p>
+                <p className="mt-0.5 text-xs leading-relaxed text-mist">{item.detail}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </article>

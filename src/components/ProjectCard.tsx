@@ -29,19 +29,33 @@ export default function ProjectCard({ project, index, onOpen }: { project: Proje
         >
           <motion.div layoutId={`art-${project.id}`} className="absolute inset-0 overflow-hidden rounded-2xl">
             <div className="absolute inset-0 transition-transform duration-[1.4s] ease-[var(--ease-cine)] group-hover:scale-[1.07]">
-              <ProjectArt project={project} />
+              {project.thumbnail ? (
+                <img
+                  src={project.thumbnail}
+                  alt={project.thumbnailAlt ?? `${project.title} project screenshot`}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <ProjectArt project={project} />
+              )}
             </div>
+            {project.thumbnail && <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-black/20" />}
           </motion.div>
 
           <div className="absolute left-5 top-5 flex items-center gap-2 sm:left-7 sm:top-7">
-            <span className="font-display text-xl leading-none text-crimson-2">S</span>
+            <span className="font-display text-xl leading-none text-crimson-2">U</span>
             <span className="text-[10px] font-bold tracking-[0.34em] text-bone/80">ORIGINAL</span>
           </div>
-          <span className="absolute right-5 top-5 rounded border border-white/30 px-1.5 py-px text-[10px] font-bold text-bone sm:right-7 sm:top-7">{project.year}</span>
+          <span className="absolute right-5 top-5 rounded border border-white/30 px-1.5 py-px text-[10px] font-bold uppercase text-bone sm:right-7 sm:top-7">{project.status}</span>
 
           <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7 [transform:translateZ(40px)]">
             <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-mist">{project.genre}</p>
-            <motion.h3 layoutId={`title-${project.id}`} className="font-display text-[clamp(2.4rem,5vw,4.6rem)] leading-[0.88] tracking-wide text-bone">
+            <motion.h3
+              layoutId={`title-${project.id}`}
+              className={`font-display ${project.title.length > 26 ? 'text-[clamp(1.25rem,5vw,3rem)]' : 'text-[clamp(2.4rem,5vw,4.6rem)]'} leading-[0.88] tracking-wide text-bone`}
+            >
               {project.title}
             </motion.h3>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-bone/75 sm:text-[15px]">{project.logline}</p>
@@ -53,17 +67,29 @@ export default function ProjectCard({ project, index, onOpen }: { project: Proje
               ))}
             </div>
             <div className="mt-5 flex flex-wrap items-center gap-3">
-              <span className="flex min-h-11 items-center gap-2 rounded-md bg-bone px-5 text-sm font-bold text-ink transition group-hover:bg-white">▶ View Project</span>
-              {project.github && (
+              {project.website ? (
                 <a
-                  href={project.github}
+                  href={project.website}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="flex min-h-11 items-center gap-2 rounded-md bg-bone px-5 text-sm font-bold text-ink transition group-hover:bg-white"
+                >
+                  ▶ View Project
+                </a>
+              ) : (
+                <span className="flex min-h-11 items-center gap-2 rounded-md bg-bone px-5 text-sm font-bold text-ink transition group-hover:bg-white">▶ View Project</span>
+              )}
+              {project.website && (
+                <a
+                  href={project.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   data-cursor="link"
                   onClick={(e) => e.stopPropagation()}
                   className="flex min-h-11 items-center gap-2 rounded-md border border-white/25 bg-black/30 px-4 text-sm font-semibold text-bone backdrop-blur transition hover:border-bone"
                 >
-                  GitHub ↗
+                  Live website ↗
                 </a>
               )}
             </div>

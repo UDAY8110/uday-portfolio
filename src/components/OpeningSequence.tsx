@@ -3,16 +3,17 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { profile } from '../data/portfolio';
 import { useReducedMotionPref } from '../hooks/useMedia';
 import { EASE, Magnetic } from './fx';
+import ProfileArtwork from './ProfileArtwork';
 
 /**
  * The signature moment:
- * black → studio card → SUSHMITA → THE SERIES → portrait reveal → role → ▶ PLAY
+ * black → studio card → name → THE SERIES → profile artwork → role → ▶ PLAY
  */
 const TIMELINE = [
   { at: 300, beat: 1 }, // studio card
   { at: 1900, beat: 2 }, // name
   { at: 2700, beat: 3 }, // THE SERIES
-  { at: 3400, beat: 4 }, // portrait
+  { at: 3400, beat: 4 }, // profile artwork
   { at: 4300, beat: 5 }, // role
   { at: 5000, beat: 6 }, // play button
 ];
@@ -80,21 +81,14 @@ export default function OpeningSequence({ onDone }: { onDone: () => void }) {
         )}
       </AnimatePresence>
 
-      {/* portrait */}
+      {/* neutral, abstract profile artwork */}
       <motion.div
         className="absolute inset-x-0 bottom-0 z-0 mx-auto flex h-[68vh] max-w-[900px] items-end justify-center"
         initial={{ opacity: 0, scale: 1.12, filter: 'blur(18px) brightness(0.3)' }}
         animate={beat >= 4 ? { opacity: 1, scale: 1, filter: 'blur(0px) brightness(1)' } : {}}
         transition={{ duration: 1.6, ease: EASE }}
       >
-        <img
-          src={profile.portrait.src}
-          srcSet={profile.portrait.srcSet}
-          sizes="(max-width: 768px) 100vw, 900px"
-          alt={profile.portrait.alt}
-          className="h-full w-auto max-w-none object-contain object-bottom [mask-image:linear-gradient(to_bottom,black_55%,transparent_98%)]"
-
-        />
+        <ProfileArtwork />
       </motion.div>
       <div aria-hidden className="absolute inset-0 z-[1] bg-[radial-gradient(70%_60%_at_50%_40%,transparent_30%,rgba(0,0,0,0.85)_100%)]" />
 

@@ -1,171 +1,177 @@
-/**
- * Central portfolio data — generated from Sushmita's resume (Sushmita_dasari.pdf).
- * Every fact on the site comes from this file. Update it here and the whole site follows.
- * Nothing here should be added unless it appears on the resume.
- */
+/** Central portfolio data, grounded in Uday Kumar's supplied resume. */
 
 export type Palette = { from: string; via: string; to: string; accent: string };
 
 export const profile = {
-  fullName: 'Dasari Venkata Ratna Sri Sushmita',
-  displayName: 'Sushmita Dasari',
-  firstName: 'SUSHMITA',
-  seriesTag: 'THE SERIES',
-  /** Fictional studio card shown at the very start of the opening sequence. */
-  originalLabel: 'A DASARI ORIGINAL',
-  role: 'Full-Stack Developer',
-  tagline: ['Full-Stack Developer', 'AI / ML', 'Java'],
+  fullName: 'Uday Kumar',
+  displayName: 'Uday Kumar',
+  firstName: 'UDAY',
+  seriesTag: 'ECE · RF & MICROWAVE · AUTONOMOUS SYSTEMS',
+  originalLabel: 'A UDAY ORIGINAL',
+  role: 'ECE Undergraduate · RF & Microwave Research · IEEE Student Branch President',
+  tagline: ['ECE Undergraduate', 'RF & Microwave Research Intern, IIT Delhi', 'IEEE Student Branch President'],
   intro:
-    'A B.Tech Artificial Intelligence & Machine Learning student (CGPA 9.10) and full-stack developer building AI-powered platforms, payment systems and multi-tenant SaaS with Java, Python, React, Node.js and Docker.',
-  location: 'Surampalem, Andhra Pradesh',
-  email: 'sushmitadasari17@gmail.com',
+    'I am an Electronics and Communication Engineering undergraduate drawn to the point where research meets hands-on engineering. My work spans RF and antenna research, embedded systems, autonomous robotics and IoT, alongside web projects and technical leadership through IEEE.',
+  location: 'Delhi NCR, India',
+  email: 'uday20652@gmail.com',
+  phone: '+91 9891721141',
   links: {
-    linkedin: 'https://www.linkedin.com/in/sushmita-dasari-227a40284/',
-    github: 'https://github.com/Sushmitadasari',
+    linkedin: 'https://www.linkedin.com/in/uday-kumar-a4b6a3309/',
+    github: 'https://github.com/UDAY8110',
   },
-  resumePdf: '/assets/Sushmita_Dasari_Resume.pdf',
-  portrait: {
-    src: '/assets/portrait-720.webp',
-    srcSet: '/assets/portrait-420.webp 420w, /assets/portrait-720.webp 720w, /assets/portrait-1100.webp 1100w',
-    alt: 'Portrait of Sushmita Dasari',
-  },
-  interests: ['System Design', 'Cloud Computing (AWS)', 'Machine Learning'],
+  resumeDocx: '/assets/Uday_Kumar_Resume.docx',
+  interests: ['RF & Microwave Engineering', 'Antenna Design', 'Embedded Systems', 'Autonomous Robotics', 'IoT'],
 };
 
 export const education = [
   {
-    school: 'Aditya Engineering College',
-    place: 'Surampalem',
-    degree: 'Bachelor of Technology — Artificial Intelligence and Machine Learning',
-    period: 'October 2023 – Present',
-    score: 'CGPA 9.10',
-  },
-  {
-    school: 'Sri Chaitanya Junior College',
-    place: 'Kakinada',
-    degree: 'BIEAP — MPC',
-    period: 'June 2021 – May 2023',
-    score: 'Score 925/1000',
+    school: 'Manav Rachna International Institute of Research and Studies',
+    place: 'Delhi NCR, India',
+    degree: 'B.Tech in Electronics & Communication Engineering',
+    period: '2024 – 2028',
+    score: 'Semester 2: 8.10 · Semester 3: 8.25 · Semester 4: 8.73 SGPA',
   },
 ];
 
 export const experience = [
   {
-    company: 'Technical Hub Pvt Ltd',
-    role: 'Trainee',
-    place: 'Surampalem, AP',
-    period: 'May 2025 – June 2026',
+    company: 'IIT Delhi',
+    role: 'RF & Microwave Antenna Research Intern',
+    place: 'New Delhi, India',
+    period: 'June – July 2026',
     points: [
-      'Completed one year of intensive Full-Stack Development (FSD) training covering frontend, backend, database integration, and deployment workflows.',
-      'Developed responsive and functional web applications by implementing user interfaces, server-side logic, and database connectivity.',
-      'Deployed and managed web applications while applying version control, debugging, and end-to-end development practices.',
+      'Designing and simulating high-gain slotted waveguide and microstrip patch antenna arrays for X-band RF applications using CST Studio Suite.',
+      'Analyzing S-parameters, gain, return loss and bandwidth under faculty supervision, and contributing to wireless communications research and manuscript development.',
+    ],
+  },
+  {
+    company: 'Manav Rachna International Institute of Research and Studies',
+    role: 'PCB Design Intern',
+    place: 'Faridabad, India',
+    period: '1 month',
+    points: [
+      'Completed PCB development in Altium Designer, including schematic capture, component placement, high-speed routing and design-rule checks.',
+      'Prepared production-ready layouts for embedded hardware modules with attention to signal integrity and manufacturability.',
     ],
   },
 ];
+
+export const leadership = {
+  role: 'IEEE Student Branch President',
+  detail:
+    'Elected to lead the university IEEE chapter, spearheading technical workshops, industry collaborations and a research-first culture across 100+ student members.',
+};
 
 export type Metric = { value: string; label: string };
 
 export type Project = {
   id: string;
   title: string;
-  year: string;
+  status: 'Ongoing' | 'Completed';
   genre: string;
   logline: string;
   stack: string[];
   build: string[];
   features: string[];
   metrics: Metric[];
-  /** Omit when the repository isn't public — the GitHub button is hidden instead of linking to a 404. */
-  github?: string;
+  website?: string;
+  thumbnail?: string;
+  thumbnailAlt?: string;
   palette: Palette;
-  motif: 'shield' | 'flow' | 'tenants';
+  motif: 'book' | 'helmet' | 'travel' | 'air' | 'calculator';
 };
+
+const crimson: Palette = { from: '#24060b', via: '#6e0d1d', to: '#09070a', accent: '#ff3d5a' };
+const amber: Palette = { from: '#1c1003', via: '#6b3c06', to: '#0a0806', accent: '#ffb547' };
+const ocean: Palette = { from: '#04121f', via: '#0f4c6e', to: '#05080d', accent: '#4cc9ff' };
+const violet: Palette = { from: '#120822', via: '#3d1a6e', to: '#07060c', accent: '#b98bff' };
+const jade: Palette = { from: '#03150f', via: '#0d5a40', to: '#050a08', accent: '#46e3a8' };
 
 export const projects: Project[] = [
   {
-    id: 'policyguard-ai',
-    title: 'PolicyGuard AI',
-    year: '2026',
-    genre: 'AI • NLP • LLM',
-    logline: 'An AI-powered policy analysis platform across web, browser extension, mobile and desktop applications.',
-    stack: ['Python', 'NLP', 'LLM', 'REST API'],
+    id: 'pixieplot',
+    title: 'PixiePlot — AI-Powered Storytelling',
+    status: 'Ongoing',
+    genre: 'AI · Storytelling · PWA',
+    logline: 'An AI-powered storytelling app for personalized children’s stories and voice narration.',
+    stack: ['Flutter', 'AI', 'PWA', 'Authentication'],
     build: [
-      'Built an AI-powered policy analysis platform across web, browser extension, mobile, and desktop applications, processing 500+ policy documents with 92% accuracy and reducing manual review time by 60% across 8 policy categories.',
-      'Engineered LLM-based Q&A, key-information extraction, and REST API integration for 10+ document types, enabling real-time policy insights and reducing decision turnaround time by 45%.',
+      'Developing a progressive web app for personalized children’s story generation, with a responsive interface, authentication and a story library.',
+      'Integrating AI-generated stories with a voice-storytelling workflow, with attention to accessibility, performance and scalable architecture.',
     ],
-    features: [
-      'LLM-based Q&A over policy documents',
-      'Key-information extraction',
-      'REST API integration for 10+ document types',
-      'Web, browser extension, mobile & desktop apps',
-      'Real-time policy insights',
-    ],
-    metrics: [
-      { value: '500+', label: 'policy documents processed' },
-      { value: '92%', label: 'accuracy' },
-      { value: '60%', label: 'less manual review time' },
-      { value: '45%', label: 'faster decision turnaround' },
-      { value: '8', label: 'policy categories' },
-    ],
-    // The resume links to https://github.com/Sushmitadasari/PolicyGuard-AI, which is not public yet (404).
-    // Add `github: 'https://github.com/Sushmitadasari/PolicyGuard-AI',` back once the repo is public.
-    palette: { from: '#2a0610', via: '#7a0f24', to: '#0b0710', accent: '#ff3d5a' },
-    motif: 'shield',
+    features: ['Personalized story generation', 'User authentication', 'Story library', 'Voice storytelling workflow'],
+    metrics: [],
+    website: 'https://pixieplot.com/',
+    thumbnail: '/pixieplot.png',
+    thumbnailAlt: 'PixiePlot homepage showing its navigation and personalized-storytelling hero section',
+    palette: { ...violet, accent: '#b98bff' },
+    motif: 'book',
   },
   {
-    id: 'payment-gateway',
-    title: 'Payment Gateway System',
-    year: '2026',
-    genre: 'Full-Stack • Fintech • Microservices',
-    logline: 'A full-stack UPI & card payment gateway built around a strict payment state machine.',
-    stack: ['Node.js', 'Express', 'PostgreSQL', 'React', 'Docker'],
+    id: 'smart-helmet',
+    title: 'Smart Helmet',
+    status: 'Ongoing',
+    genre: 'IoT · Embedded · Safety',
+    logline: 'An accident-detection and alert system built around a Raspberry Pi Pico and connected sensors.',
+    stack: ['Raspberry Pi Pico', 'MPU6050', 'GPS', 'GSM'],
     build: [
-      'Built full-stack UPI & card payment gateway processing 1,000+ transactions at 99.8% uptime with a strict payment state machine (processing → success/failed).',
-      'Dockerized microservice architecture cut deployment setup by 70%; backend optimizations reduced API response time by 40% and tripled throughput under load.',
+      'Building an IoT safety system that uses an MPU6050 IMU, GPS and GSM modules for accident detection, location tagging and automated emergency alerts.',
+      'The project is the practical basis for the presented smart-helmet review that received the IEEE IECS 2026 Best Paper Award.',
     ],
-    features: [
-      'UPI & card payments',
-      'Strict payment state machine (processing → success / failed)',
-      'Dockerized microservice architecture',
-      'Backend optimizations for load',
-    ],
-    metrics: [
-      { value: '1,000+', label: 'transactions processed' },
-      { value: '99.8%', label: 'uptime' },
-      { value: '70%', label: 'less deployment setup' },
-      { value: '40%', label: 'faster API response' },
-      { value: '3×', label: 'throughput under load' },
-    ],
-    github: 'https://github.com/Sushmitadasari/Payment-gateway-system-Project',
-    palette: { from: '#1a0d02', via: '#8a4a07', to: '#0a0806', accent: '#ffb547' },
-    motif: 'flow',
+    features: ['Accident detection', 'GPS-based location tagging', 'Automated emergency alerts', 'Sensor integration'],
+    metrics: [],
+    palette: { ...crimson, accent: '#ff3d5a' },
+    motif: 'helmet',
   },
   {
-    id: 'multi-tenant-saas',
-    title: 'Multi-Tenant SaaS Platform',
-    year: '2026',
-    genre: 'SaaS • Security • DevOps',
-    logline: 'Shared-database multi-tenancy with strict tenant isolation and 4-level JWT/RBAC.',
-    stack: ['Node.js', 'React', 'PostgreSQL', 'Docker Compose'],
+    id: 'uday-tour-travels',
+    title: 'Uday Tour & Travels',
+    status: 'Completed',
+    genre: 'Web Development · Travel',
+    logline: 'A responsive website for tour packages, vehicle rentals and customer inquiries.',
+    stack: ['Responsive web design', 'Vercel'],
     build: [
-      'Architected shared-database multi-tenancy for 50+ concurrent tenants with strict tenant_id isolation and 4-level JWT/RBAC, achieving zero unauthorized-access incidents across 200+ users.',
-      'Implemented Docker Compose one-command deployment, reducing environment setup time from 45 minutes to under 2 minutes.',
+      'Developed and deployed a mobile-friendly website showcasing tour packages and vehicle rental services, with a way for customers to make inquiries.',
+      'Established an online presence for a real-world travel business.',
     ],
-    features: [
-      'Shared-database multi-tenancy',
-      'Strict tenant_id isolation',
-      '4-level JWT / RBAC',
-      'One-command Docker Compose deployment',
+    features: ['Tour package listings', 'Vehicle rental information', 'Customer inquiries', 'Mobile-friendly layout'],
+    metrics: [],
+    website: 'https://uday-travels-in.vercel.app/',
+    thumbnail: '/udaytravels.png',
+    thumbnailAlt: 'Uday Tour & Travels homepage showing its navigation and premium taxi and tour hero section',
+    palette: { ...ocean, accent: '#4cc9ff' },
+    motif: 'travel',
+  },
+  {
+    id: 'air-quality-monitor',
+    title: 'Air Quality Monitoring System',
+    status: 'Completed',
+    genre: 'IoT · Environmental Monitoring',
+    logline: 'A multi-sensor system for continuous air-quality monitoring and threshold-based alerts.',
+    stack: ['Multi-sensor gas detection', 'Environmental monitoring', 'Threshold alerts'],
+    build: [
+      'Built a real-time environmental monitoring platform using multi-sensor gas-detection arrays for continuous air-quality analytics.',
+      'Added threshold-based alerts for particulate and gaseous pollutants.',
     ],
-    metrics: [
-      { value: '50+', label: 'concurrent tenants' },
-      { value: '200+', label: 'users' },
-      { value: '0', label: 'unauthorized-access incidents' },
-      { value: '45m → <2m', label: 'environment setup time' },
+    features: ['Continuous monitoring', 'Multi-sensor gas detection', 'Air-quality analytics', 'Threshold-based alerts'],
+    metrics: [],
+    palette: { ...jade, accent: '#46e3a8' },
+    motif: 'air',
+  },
+  {
+    id: 'binary-calculator',
+    title: 'Binary Calculator using Arduino',
+    status: 'Completed',
+    genre: 'Embedded Systems · Hardware',
+    logline: 'An Arduino-based hardware implementation of binary arithmetic operations.',
+    stack: ['Arduino', 'Embedded hardware', 'I/O interfacing'],
+    build: [
+      'Implemented binary arithmetic operations on Arduino with custom input/output interfacing and state-machine logic for real-time computation display.',
     ],
-    github: 'https://github.com/Sushmitadasari/Multi-Tenant-SaaS-Platform',
-    palette: { from: '#04121f', via: '#0f4c6e', to: '#05080d', accent: '#4cc9ff' },
-    motif: 'tenants',
+    features: ['Binary arithmetic', 'Custom I/O interfacing', 'State-machine logic', 'Real-time computation display'],
+    metrics: [],
+    palette: { ...amber, accent: '#ffb547' },
+    motif: 'calculator',
   },
 ];
 
@@ -175,67 +181,53 @@ export type Achievement = {
   org: string;
   detail: string;
   laurel: string;
-  link?: string;
 };
 
 export const achievements: Achievement[] = [
   {
-    id: 'algouniversity',
-    title: 'Tech Fellow',
-    org: 'AlgoUniversity',
-    detail: 'Selected through competitive national selection — advanced DSA, algorithm optimization, and competitive coding.',
-    laurel: 'National Selection',
+    id: 'iecs-best-paper',
+    title: 'Best Paper Award',
+    org: 'IEEE IECS 2026 · VIT Bhopal University',
+    detail:
+      'Awarded for the presented review “IoT and Sensor Fusion in Smart Helmets: A Review Toward Safer and Sustainable Mobility” at the 1st IEEE International Conference on Intelligent Electronics & Computational Systems.',
+    laurel: 'Presented Research',
   },
   {
-    id: 'flipkart-grid',
-    title: 'Semi-Finalist',
-    org: 'Flipkart GRiD 7.0',
-    detail: 'Competed among top national engineering talent.',
-    laurel: 'Semi-Finalist',
-    link: 'https://drive.google.com/file/d/16pXA2hssyJqlYMr27wfi6U4bjKDLvh9f/view?usp=drive_link',
-  },
-  {
-    id: 'branch-topper',
-    title: 'AIML Branch Topper',
-    org: 'B.Tech AI & ML',
-    detail: '9.24 SGPA for the semester.',
-    laurel: 'Branch Topper',
-  },
-  {
-    id: 'competitive-coding',
-    title: '850+ Problems Solved',
-    org: 'LeetCode • GFG • CodeChef',
-    detail: 'LeetCode: 350+ DSA problems (peak rating 1442). GFG: 300+ problems (rating 1436). CodeChef: 200+ problems.',
-    laurel: 'Competitive Coding',
-  },
-  {
-    id: 'hackerrank',
-    title: '5-Star Badges',
-    org: 'HackerRank',
-    detail: '5-star badges in C, Python, Java, and SQL.',
-    laurel: 'Four Languages',
+    id: 'nxp-cup-finalist',
+    title: 'NXP Cup India 2026 Regional Finalist',
+    org: 'NXP Semiconductors India',
+    detail:
+      'Placed among the top 100 of 4,600+ teams nationwide. Contributed to a ROS2-based autonomous vehicle with computer vision, sensor fusion, line following and obstacle avoidance.',
+    laurel: 'Top 100 · 4,600+ Teams',
   },
 ];
 
-export type Certification = { issuer: string; name: string; link: string };
+export type ResearchItem = {
+  title: string;
+  status: string;
+  detail: string;
+  kind: 'presented' | 'in-development';
+};
 
-export const certifications: Certification[] = [
-  { issuer: 'NPTEL', name: 'Database Management System', link: 'https://drive.google.com/file/d/1MqkJHchXeaGD4S8mzPmEGxEYddAsxAjN/view?usp=drive_link' },
-  { issuer: 'NPTEL', name: 'Fundamentals of Artificial Intelligence', link: 'https://drive.google.com/file/d/1GqyUQ-lrE-bHaN457t6fIdssgGG4HMXf/view?usp=drive_link' },
-  { issuer: 'NPTEL', name: 'Deep Learning', link: 'https://drive.google.com/file/d/1PWSRP5SQDPzkoTCF3A24eIJoSpTwgsff/view?usp=sharing' },
-  { issuer: 'AWS', name: 'AWS Certified AI Practitioner', link: 'https://drive.google.com/file/d/1h8e5p0a9T6f5gBaOP2ROfwWHZfkkspGn/view?usp=drive_link' },
-  { issuer: 'AWS', name: 'AWS Academy Graduate – Cloud Foundations', link: 'https://www.credly.com/badges/2d4810f9-3dbe-444d-99b9-61312ea5e7df/public_url' },
-  { issuer: 'MongoDB', name: 'MongoDB Certified Associate Developer', link: 'https://www.credly.com/badges/fd3362bd-743a-4c4d-a68e-b1fdc5d46811/public_url' },
-  { issuer: 'GitHub', name: 'GitHub Foundations', link: 'https://drive.google.com/file/d/1o0fkCAMRWTg1oMwxlqu6t6wnOpBv66Vq/view?usp=sharing' },
-  { issuer: 'Pearson', name: 'IT Specialist – HTML and CSS', link: 'https://www.credly.com/badges/e4a55298-e396-41d8-a032-283aafe9fab7/public_url' },
-  { issuer: 'Oracle', name: 'Java Certified Foundations Associate', link: 'https://drive.google.com/file/d/1g-yyceHtLg_k2RWiOIJqH0MMcGlaH90P/view?usp=sharing' },
-  { issuer: 'Oracle', name: 'Oracle Certified Foundations Associate – Database', link: 'https://drive.google.com/file/d/10-DzabbcH2vHrI6bAohoT8czKRZMa2kV/view?usp=drive_link' },
-  { issuer: 'Cisco', name: 'HTML Essentials', link: 'https://www.credly.com/badges/eb27ca95-3b2a-4948-bef9-0385d1d49055/public_url' },
-  { issuer: 'Cisco', name: 'CSS Essentials', link: 'https://www.credly.com/badges/3b37497f-6a61-4889-af3c-ed337a460a0b/public_url' },
-  { issuer: 'Cisco', name: 'JavaScript Essentials 1', link: 'https://www.credly.com/badges/9cdd4d55-6ecc-463f-b254-811ccdd0539c/public_url' },
-  { issuer: 'Cisco', name: 'JavaScript Essentials 2', link: 'https://www.credly.com/badges/0e1b036e-4318-4c8e-b750-2aca77314442/public_url' },
-  { issuer: 'Cisco', name: 'Python Essentials 1', link: 'https://www.credly.com/badges/0e21e3eb-d8ef-4770-95d7-dcbd6f8696b1/public_url' },
-  { issuer: 'Udemy', name: 'Microsoft Azure Hands-On Training (AZ-900, AZ-104, AZ-305)', link: 'https://drive.google.com/file/d/1KrXClhY0nJ3Acxs7DioNf4Q1rpaMvgPT/view?usp=sharing' },
+export const research: ResearchItem[] = [
+  {
+    title: 'IoT and Sensor Fusion in Smart Helmets: A Review Toward Safer and Sustainable Mobility',
+    status: 'Presented · Best Paper Award',
+    detail: '1st IEEE International Conference on Intelligent Electronics & Computational Systems (IECS 2026), VIT Bhopal University.',
+    kind: 'presented',
+  },
+  {
+    title: 'Design and Comparative Analysis of 4-Slot and 8-Slot Slotted Waveguide Antenna Arrays in X-Band',
+    status: 'Manuscript in development · Not submitted',
+    detail: 'Research manuscript under development.',
+    kind: 'in-development',
+  },
+  {
+    title: 'Design and Performance Analysis of a Slot-Loaded Microstrip Patch Antenna for Enhanced Bandwidth',
+    status: 'Manuscript in development · Not submitted',
+    detail: 'Research manuscript under development.',
+    kind: 'in-development',
+  },
 ];
 
 export type Skill = { name: string; mono: string; note?: string };
@@ -245,110 +237,100 @@ export const skillCategories: SkillCategory[] = [
   {
     id: 'languages',
     title: 'Languages',
-    subtitle: 'Java is the primary language',
+    subtitle: 'Programming and web fundamentals',
     skills: [
-      { name: 'Java', mono: 'Jv', note: 'Primary' },
-      { name: 'Python', mono: 'Py' },
       { name: 'C', mono: 'C' },
       { name: 'C++', mono: 'C+' },
-    ],
-  },
-  {
-    id: 'frontend',
-    title: 'Frontend',
-    subtitle: 'Interfaces & the web platform',
-    skills: [
-      { name: 'React', mono: 'Re' },
+      { name: 'Python', mono: 'Py' },
       { name: 'HTML', mono: 'Ht' },
       { name: 'CSS', mono: 'Cs' },
       { name: 'JavaScript', mono: 'Js' },
     ],
   },
   {
-    id: 'backend',
-    title: 'Backend',
-    subtitle: 'Server-side logic',
+    id: 'embedded',
+    title: 'Embedded & Robotics',
+    subtitle: 'Embedded platforms and autonomous systems',
     skills: [
-      { name: 'Node.js', mono: 'No' },
-      { name: 'Express.js', mono: 'Ex' },
+      { name: 'Arduino', mono: 'Ar' },
+      { name: 'Raspberry Pi Pico', mono: 'RP' },
+      { name: 'ROS2', mono: 'R2' },
+      { name: 'Sensor interfacing', mono: 'SI' },
+      { name: 'Autonomous navigation', mono: 'AN' },
     ],
   },
   {
-    id: 'infra',
-    title: 'Infra & Tools',
-    subtitle: 'Shipping & architecture',
+    id: 'eda',
+    title: 'EDA & Simulation',
+    subtitle: 'PCB design and RF simulation',
     skills: [
-      { name: 'Docker', mono: 'Dk' },
-      { name: 'Docker Compose', mono: 'Dc' },
-      { name: 'REST APIs', mono: 'Ap' },
-      { name: 'Microservices', mono: 'Ms' },
-      { name: 'JWT Auth', mono: 'Jw' },
-      { name: 'Git / GitHub', mono: 'Gt' },
-      { name: 'Postman', mono: 'Pm' },
+      { name: 'Altium Designer', mono: 'Al' },
+      { name: 'Cadence', mono: 'Cd' },
+      { name: 'CST Studio Suite', mono: 'CST' },
     ],
   },
   {
-    id: 'databases',
-    title: 'Databases',
-    subtitle: 'Indexing • Normalization',
+    id: 'iot',
+    title: 'IoT & Hardware',
+    subtitle: 'Prototyping and electronics integration',
     skills: [
-      { name: 'PostgreSQL', mono: 'Pg' },
-      { name: 'MongoDB', mono: 'Mg' },
-      { name: 'MySQL', mono: 'My' },
+      { name: 'IoT prototyping', mono: 'IoT' },
+      { name: 'Hardware design', mono: 'HW' },
+      { name: 'Sensor fusion', mono: 'SF' },
+      { name: 'Electronics integration', mono: 'EI' },
     ],
   },
   {
-    id: 'fundamentals',
-    title: 'CS Fundamentals',
-    subtitle: 'The foundations',
+    id: 'research',
+    title: 'Research Areas',
+    subtitle: 'RF systems and autonomous engineering',
     skills: [
-      { name: 'DSA', mono: 'Ds' },
-      { name: 'OS', mono: 'Os' },
-      { name: 'CN', mono: 'Cn' },
-      { name: 'DBMS', mono: 'Db' },
-      { name: 'OOPs', mono: 'Oo' },
-      { name: 'Collections', mono: 'Co' },
-      { name: 'Multithreading', mono: 'Mt' },
+      { name: 'RF/Microwave Engineering', mono: 'RF' },
+      { name: 'Antenna design', mono: 'AD' },
+      { name: 'Wireless communication', mono: 'WC' },
+      { name: 'Autonomous systems', mono: 'AS' },
     ],
   },
   {
-    id: 'interests',
-    title: 'Interests',
-    subtitle: 'Coming soon to the series',
+    id: 'tools',
+    title: 'Tools',
+    subtitle: 'Development and debugging workflow',
     skills: [
-      { name: 'System Design', mono: 'Sd' },
-      { name: 'Cloud Computing (AWS)', mono: 'Aw' },
-      { name: 'Machine Learning', mono: 'Ml' },
+      { name: 'Linux', mono: 'Li' },
+      { name: 'Git', mono: 'Gt' },
+      { name: 'GitHub', mono: 'Gh' },
+      { name: 'Embedded debugging', mono: 'ED' },
     ],
   },
 ];
 
-/**
- * Factual cross-references shown when a skill card is hovered/tapped:
- * where the skill appears in the projects, certifications or achievements on the resume.
- */
 export const skillEvidence: Record<string, string[]> = {
-  Java: ['Oracle Java Certified Foundations Associate', 'HackerRank 5-star'],
-  Python: ['PolicyGuard AI', 'Cisco Python Essentials 1', 'HackerRank 5-star'],
-  C: ['HackerRank 5-star'],
-  React: ['Payment Gateway System', 'Multi-Tenant SaaS Platform'],
-  HTML: ['Pearson IT Specialist – HTML and CSS', 'Cisco HTML Essentials'],
-  CSS: ['Pearson IT Specialist – HTML and CSS', 'Cisco CSS Essentials'],
-  JavaScript: ['Cisco JavaScript Essentials 1 & 2'],
-  'Node.js': ['Payment Gateway System', 'Multi-Tenant SaaS Platform'],
-  'Express.js': ['Payment Gateway System'],
-  Docker: ['Payment Gateway System'],
-  'Docker Compose': ['Multi-Tenant SaaS Platform'],
-  'REST APIs': ['PolicyGuard AI'],
-  Microservices: ['Payment Gateway System'],
-  'JWT Auth': ['Multi-Tenant SaaS Platform'],
-  'Git / GitHub': ['GitHub Foundations'],
-  PostgreSQL: ['Payment Gateway System', 'Multi-Tenant SaaS Platform'],
-  MongoDB: ['MongoDB Certified Associate Developer'],
-  DBMS: ['NPTEL Database Management System', 'Oracle Database Foundations'],
-  DSA: ['AlgoUniversity Tech Fellow', '850+ problems solved'],
-  'Cloud Computing (AWS)': ['AWS Certified AI Practitioner', 'AWS Academy Cloud Foundations'],
-  'Machine Learning': ['B.Tech AI & ML', 'NPTEL Deep Learning'],
+  C: ['Technical skills'],
+  'C++': ['Technical skills'],
+  Python: ['Technical skills'],
+  HTML: ['Technical skills'],
+  CSS: ['Technical skills'],
+  JavaScript: ['Technical skills'],
+  Arduino: ['Binary Calculator using Arduino'],
+  'Raspberry Pi Pico': ['Smart Helmet'],
+  ROS2: ['NXP Cup India 2026 autonomous vehicle'],
+  'Sensor interfacing': ['Smart Helmet', 'Air Quality Monitoring System'],
+  'Autonomous navigation': ['NXP Cup India 2026 autonomous vehicle'],
+  'Altium Designer': ['PCB Design internship'],
+  Cadence: ['EDA and simulation skills'],
+  'CST Studio Suite': ['IIT Delhi antenna research internship'],
+  'IoT prototyping': ['Smart Helmet', 'Air Quality Monitoring System'],
+  'Hardware design': ['Binary Calculator using Arduino', 'PCB Design internship'],
+  'Sensor fusion': ['Smart Helmet review', 'NXP Cup India 2026'],
+  'Electronics integration': ['Embedded and IoT projects'],
+  'RF/Microwave Engineering': ['IIT Delhi antenna research internship'],
+  'Antenna design': ['X-band antenna research'],
+  'Wireless communication': ['RF and microwave research'],
+  'Autonomous systems': ['NXP Cup India 2026 autonomous vehicle'],
+  Linux: ['Tools'],
+  Git: ['Tools'],
+  GitHub: ['Tools'],
+  'Embedded debugging': ['Tools'],
 };
 
 export type Episode = {
@@ -368,137 +350,91 @@ export type Season = {
   episodes: Episode[];
 };
 
-const crimson: Palette = { from: '#24060b', via: '#6e0d1d', to: '#09070a', accent: '#ff3d5a' };
-const amber: Palette = { from: '#1c1003', via: '#6b3c06', to: '#0a0806', accent: '#ffb547' };
-const ocean: Palette = { from: '#04121f', via: '#0f4c6e', to: '#05080d', accent: '#4cc9ff' };
-const violet: Palette = { from: '#120822', via: '#3d1a6e', to: '#07060c', accent: '#b98bff' };
-const jade: Palette = { from: '#03150f', via: '#0d5a40', to: '#050a08', accent: '#46e3a8' };
-
 export const seasons: Season[] = [
   {
     number: 1,
-    title: 'The Beginning',
-    period: '2021 – 2023',
-    synopsis: 'Intermediate years at Sri Chaitanya Junior College, Kakinada — Mathematics, Physics and Chemistry.',
+    title: 'The ECE Foundation',
+    period: '2024 – 2028',
+    synopsis: 'Studying Electronics & Communication Engineering at Manav Rachna International Institute of Research and Studies.',
     episodes: [
       {
         code: 'S01 E01',
-        title: 'The Foundation',
-        description: 'BIEAP, MPC at Sri Chaitanya Junior College, Kakinada — finishing with a score of 925/1000.',
-        tags: ['MPC', 'BIEAP'],
-        runtime: 'Jun 2021 – May 2023',
+        title: 'The Undergraduate',
+        description: 'B.Tech in Electronics & Communication Engineering at Manav Rachna International Institute of Research and Studies.',
+        tags: ['B.Tech', 'ECE'],
+        runtime: '2024 – 2028',
+        palette: violet,
+      },
+      {
+        code: 'S01 E02',
+        title: 'The Academic Arc',
+        description: 'Semester SGPA: 8.10 in Semester 2, 8.25 in Semester 3 and 8.73 in Semester 4.',
+        tags: ['Semester 2 · 8.10', 'Semester 3 · 8.25', 'Semester 4 · 8.73'],
+        runtime: 'Semesters 2 – 4',
         palette: amber,
       },
     ],
   },
   {
     number: 2,
-    title: 'Enter: AI & ML',
-    period: '2023 – Present',
-    synopsis: 'B.Tech in Artificial Intelligence and Machine Learning at Aditya Engineering College, Surampalem.',
+    title: 'Research & Leadership',
+    period: '2026',
+    synopsis: 'RF and microwave antenna research, PCB design practice, and student leadership through IEEE.',
     episodes: [
       {
         code: 'S02 E01',
-        title: 'The Engineer',
-        description: 'Bachelor of Technology in Artificial Intelligence and Machine Learning — CGPA 9.10.',
-        tags: ['B.Tech', 'AI & ML', 'CGPA 9.10'],
-        runtime: 'Oct 2023 – Present',
-        palette: violet,
+        title: 'RF Research at IIT Delhi',
+        description: 'Designing and simulating slotted waveguide and microstrip patch antenna arrays for X-band applications using CST Studio Suite.',
+        tags: ['RF & Microwave', 'X-band', 'CST Studio Suite'],
+        runtime: 'June – July 2026',
+        palette: ocean,
       },
       {
         code: 'S02 E02',
-        title: 'The Topper',
-        description: 'AIML Branch Topper with a 9.24 SGPA for the semester.',
-        tags: ['9.24 SGPA', 'Branch Topper'],
-        runtime: 'One semester',
-        palette: crimson,
+        title: 'PCB Design',
+        description: 'Schematic capture, component placement, high-speed routing and design-rule checks for embedded hardware layouts.',
+        tags: ['PCB Design', 'Altium Designer'],
+        runtime: '1 month',
+        palette: amber,
       },
       {
         code: 'S02 E03',
-        title: 'The Problem Solver',
-        description: 'LeetCode 350+ (peak 1442), GFG 300+ (1436), CodeChef 200+ and HackerRank 5-star badges in C, Python, Java and SQL.',
-        tags: ['DSA', 'LeetCode', 'GFG', 'CodeChef', 'HackerRank'],
-        runtime: '850+ problems',
+        title: 'IEEE Student Branch President',
+        description: 'Leading technical workshops, industry collaborations and student research initiatives across 100+ student members.',
+        tags: ['IEEE', 'Technical Leadership', 'Research'],
+        runtime: 'Student Branch',
         palette: jade,
       },
     ],
   },
   {
     number: 3,
-    title: 'Learning to Build',
-    period: '2025 – 2026',
-    synopsis: 'One year of intensive Full-Stack Development training as a Trainee at Technical Hub Pvt Ltd.',
+    title: 'Projects & Recognition',
+    period: '2026',
+    synopsis: 'Building across embedded systems, IoT, robotics and web development, alongside conference research and competition work.',
     episodes: [
       {
         code: 'S03 E01',
-        title: 'The Trainee',
-        description: 'Intensive Full-Stack Development training covering frontend, backend, database integration and deployment workflows.',
-        tags: ['FSD', 'Frontend', 'Backend', 'Databases'],
-        runtime: 'May 2025 – Jun 2026',
-        palette: ocean,
-      },
-      {
-        code: 'S03 E02',
-        title: 'The Developer',
-        description: 'Developed responsive web applications — user interfaces, server-side logic and database connectivity.',
-        tags: ['React', 'Node.js', 'Express.js'],
-        runtime: 'Technical Hub',
-        palette: violet,
-      },
-      {
-        code: 'S03 E03',
-        title: 'The Deployer',
-        description: 'Deployed and managed web applications with version control, debugging and end-to-end development practices.',
-        tags: ['Git / GitHub', 'Deployment'],
-        runtime: 'Technical Hub',
-        palette: jade,
-      },
-    ],
-  },
-  {
-    number: 4,
-    title: 'Building Real Products',
-    period: '2026',
-    synopsis: 'Three Originals — an AI platform, a payment gateway and a multi-tenant SaaS — plus national-level recognition.',
-    episodes: [
-      {
-        code: 'S04 E01',
-        title: 'The AI Builder',
-        description: 'PolicyGuard AI — LLM-based Q&A and key-information extraction across 500+ policy documents at 92% accuracy.',
-        tags: ['Python', 'NLP', 'LLM'],
-        runtime: '2026',
+        title: 'Smart Helmet Research',
+        description: 'The smart-helmet review was presented at IEEE IECS 2026 and received the Best Paper Award.',
+        tags: ['Presented Paper', 'Best Paper Award', 'IEEE IECS 2026'],
+        runtime: 'VIT Bhopal University',
         palette: crimson,
       },
       {
-        code: 'S04 E02',
-        title: 'The Architect',
-        description: 'Payment Gateway System and Multi-Tenant SaaS Platform — state machines, microservices, tenant isolation and RBAC.',
-        tags: ['Node.js', 'PostgreSQL', 'Docker'],
+        code: 'S03 E02',
+        title: 'NXP Cup India',
+        description: 'Regional Finalist, placing among the top 100 of 4,600+ teams with a ROS2-based autonomous vehicle.',
+        tags: ['Regional Finalist', 'ROS2', 'Top 100'],
         runtime: '2026',
-        palette: amber,
-      },
-      {
-        code: 'S04 E03',
-        title: 'The Fellow',
-        description: 'Selected as a Tech Fellow at AlgoUniversity and reached the Semi-Finals of Flipkart GRiD 7.0.',
-        tags: ['AlgoUniversity', 'Flipkart GRiD 7.0'],
-        runtime: 'National stage',
         palette: ocean,
       },
-    ],
-  },
-  {
-    number: 5,
-    title: "What's Next",
-    period: 'Now streaming',
-    synopsis: 'The interests on the resume point to the next arc of the story.',
-    episodes: [
       {
-        code: 'S05 E01',
-        title: 'The Next Chapter',
-        description: 'Exploring System Design, Cloud Computing (AWS) and Machine Learning.',
-        tags: ['System Design', 'AWS', 'Machine Learning'],
-        runtime: 'In production',
+        code: 'S03 E03',
+        title: 'Five Engineering Projects',
+        description: 'PixiePlot, Smart Helmet, Uday Tour & Travels, an air-quality monitor and an Arduino binary calculator.',
+        tags: ['AI & Web', 'IoT', 'Embedded Systems'],
+        runtime: '2 ongoing · 3 completed',
         palette: violet,
       },
     ],
@@ -508,62 +444,55 @@ export const seasons: Season[] = [
 export type TopPick = { label: string; title: string; detail: string; palette: Palette };
 
 export const topPicks: TopPick[] = [
-  { label: 'Primary language', title: 'Java', detail: 'Listed as primary on the resume • Oracle certified', palette: amber },
-  { label: 'The AI Original', title: 'PolicyGuard AI', detail: '500+ documents • 92% accuracy', palette: crimson },
-  { label: 'Biggest stage', title: 'Flipkart GRiD 7.0', detail: 'Semi-Finalist', palette: ocean },
-  { label: 'National selection', title: 'AlgoUniversity', detail: 'Tech Fellow', palette: violet },
-  { label: 'Academic high', title: 'Branch Topper', detail: '9.24 SGPA in AI & ML', palette: jade },
-  { label: 'Cloud credential', title: 'AWS AI Practitioner', detail: 'AWS Certified', palette: amber },
-  { label: 'Problems solved', title: '850+', detail: 'LeetCode 350+ • GFG 300+ • CodeChef 200+', palette: crimson },
-  { label: 'The training arc', title: '1 Year of FSD', detail: 'Technical Hub Pvt Ltd', palette: ocean },
-  { label: 'Database credential', title: 'MongoDB', detail: 'Certified Associate Developer', palette: jade },
-  { label: 'Current focus', title: 'System Design', detail: 'with Cloud (AWS) & Machine Learning', palette: violet },
+  { label: 'Conference research', title: 'Best Paper Award', detail: 'IEEE IECS 2026 · VIT Bhopal University', palette: amber },
+  { label: 'National competition', title: 'NXP Cup India 2026', detail: 'Regional Finalist · Top 100 of 4,600+ teams', palette: ocean },
+  { label: 'Research internship', title: 'RF & Microwave', detail: 'Antenna research · IIT Delhi', palette: crimson },
+  { label: 'Student leadership', title: 'IEEE President', detail: 'Technical initiatives and student research', palette: jade },
+  { label: 'PCB design', title: 'Hardware Layouts', detail: 'PCB Design Intern · Altium Designer', palette: amber },
+  { label: 'X-band research', title: 'Antenna Arrays', detail: 'Slotted waveguide and microstrip patch', palette: violet },
+  { label: 'IoT safety', title: 'Smart Helmet', detail: 'Accident detection and emergency alerts', palette: crimson },
+  { label: 'Storytelling app', title: 'PixiePlot', detail: 'AI-powered · Ongoing', palette: violet },
+  { label: 'Environmental IoT', title: 'Air Quality', detail: 'Multi-sensor monitoring · Completed', palette: jade },
+  { label: 'Web project', title: 'Tour & Travels', detail: 'Responsive website · Completed', palette: ocean },
 ];
 
-/** Slides for the "▶ Play Intro" cinematic sequence. */
 export type IntroSlide = { kicker: string; title: string; lines: string[]; chips?: string[] };
 
 export const introSlides: IntroSlide[] = [
   {
     kicker: 'Education',
-    title: 'B.Tech · AI & ML',
-    lines: ['Aditya Engineering College, Surampalem', 'October 2023 – Present'],
-    chips: ['CGPA 9.10'],
+    title: 'B.Tech · ECE',
+    lines: ['Manav Rachna International Institute of Research and Studies', '2024 – 2028 · Delhi NCR, India'],
+    chips: ['S2 8.10', 'S3 8.25', 'S4 8.73'],
   },
   {
-    kicker: 'Skills',
-    title: 'Java first.',
-    lines: ['Python, C, C++ · React, Node.js, Express.js', 'PostgreSQL, MongoDB, MySQL · Docker, REST, JWT'],
-    chips: ['Java', 'Python', 'React', 'Node.js', 'Docker', 'PostgreSQL'],
+    kicker: 'Research',
+    title: 'RF & Microwave',
+    lines: ['Antenna research internship · IIT Delhi', 'X-band slotted waveguide and microstrip patch arrays', 'CST Studio Suite · June – July 2026'],
   },
   {
-    kicker: 'Training',
-    title: 'The Training Arc',
-    lines: ['One year of intensive Full‑Stack Development training', 'Trainee · Technical Hub Pvt Ltd · May 2025 – June 2026', 'Frontend · Backend · Databases · Deployment'],
+    kicker: 'Leadership',
+    title: 'IEEE Student Branch President',
+    lines: ['Leading technical initiatives, workshops and collaborations', 'Supporting student research activities across 100+ members'],
   },
   {
     kicker: 'Projects',
-    title: 'Three Originals',
-    lines: ['PolicyGuard AI — 500+ documents, 92% accuracy', 'Payment Gateway — 1,000+ transactions, 99.8% uptime', 'Multi-Tenant SaaS — 50+ tenants, zero unauthorized access'],
+    title: 'Five Builds',
+    lines: ['PixiePlot and Smart Helmet · Ongoing', 'Uday Tour & Travels, Air Quality Monitor and Arduino Binary Calculator · Completed'],
   },
   {
-    kicker: 'Achievements',
-    title: 'Top Moments',
-    lines: ['Tech Fellow — AlgoUniversity', 'Semi-Finalist — Flipkart GRiD 7.0', 'AIML Branch Topper — 9.24 SGPA'],
+    kicker: 'Recognition',
+    title: 'Best Paper Award',
+    lines: ['IEEE IECS 2026 · VIT Bhopal University', 'NXP Cup India 2026 Regional Finalist', 'Top 100 among 4,600+ teams'],
   },
   {
-    kicker: 'Certified',
-    title: '16 Certifications',
-    lines: ['AWS · MongoDB · Oracle · GitHub · Pearson', 'NPTEL · Cisco · Udemy'],
-  },
-  {
-    kicker: 'Current mission',
-    title: 'Now exploring',
-    lines: ['System Design · Cloud Computing (AWS) · Machine Learning'],
+    kicker: 'Research in progress',
+    title: 'Antenna Manuscripts',
+    lines: ['4-slot and 8-slot slotted waveguide antenna arrays in X-band', 'Slot-loaded microstrip patch antenna for enhanced bandwidth', 'Both manuscripts are in development and not yet submitted'],
   },
 ];
 
-export type ProfileId = 'sushmita' | 'recruiter' | 'developer' | 'creative';
+export type ProfileId = 'uday' | 'recruiter' | 'developer' | 'creative';
 export type SectionId = 'about' | 'journey' | 'originals' | 'picks' | 'skills' | 'moments' | 'story';
 
 export const viewerProfiles: {
@@ -574,8 +503,8 @@ export const viewerProfiles: {
   order: SectionId[];
 }[] = [
   {
-    id: 'sushmita',
-    name: 'Sushmita',
+    id: 'uday',
+    name: 'Uday Kumar',
     blurb: 'The full series, in order',
     color: '#e5132b',
     order: ['about', 'journey', 'originals', 'picks', 'skills', 'moments', 'story'],
@@ -589,14 +518,14 @@ export const viewerProfiles: {
   },
   {
     id: 'developer',
-    name: 'Developer',
-    blurb: 'Projects, stack & GitHub first',
+    name: 'Engineer',
+    blurb: 'Projects, skills & research first',
     color: '#46e3a8',
     order: ['originals', 'skills', 'journey', 'moments', 'about', 'picks', 'story'],
   },
   {
     id: 'creative',
-    name: 'Creative',
+    name: 'Highlights',
     blurb: 'The story arc & highlights first',
     color: '#ffb547',
     order: ['journey', 'picks', 'originals', 'moments', 'about', 'skills', 'story'],
@@ -604,11 +533,11 @@ export const viewerProfiles: {
 ];
 
 export const sectionMeta: Record<SectionId, { nav: string; card: string; meta: string; palette: Palette }> = {
-  about: { nav: 'About', card: 'About Me', meta: 'The Pilot • Education & training', palette: violet },
-  journey: { nav: 'Journey', card: 'My Journey', meta: `${seasons.length} Seasons • ${seasons.reduce((n, s) => n + s.episodes.length, 0)} Episodes`, palette: amber },
-  originals: { nav: 'Originals', card: 'My Projects', meta: `${projects.length} Originals • 2026`, palette: crimson },
-  picks: { nav: 'Top Picks', card: 'Top Picks', meta: 'Top 10 from the resume', palette: jade },
+  about: { nav: 'About', card: 'About Me', meta: 'Education · experience · leadership', palette: violet },
+  journey: { nav: 'Journey', card: 'My Journey', meta: `${seasons.length} Seasons · ${seasons.reduce((n, s) => n + s.episodes.length, 0)} Episodes`, palette: amber },
+  originals: { nav: 'Projects', card: 'My Projects', meta: `${projects.length} Projects · 2 ongoing`, palette: crimson },
+  picks: { nav: 'Highlights', card: 'Top Picks', meta: 'Research · awards · projects', palette: jade },
   skills: { nav: 'Skills', card: 'My Skills', meta: `${skillCategories.length} Categories`, palette: ocean },
-  moments: { nav: 'Moments', card: 'My Achievements', meta: `${achievements.length} Moments • ${certifications.length} Certifications`, palette: crimson },
-  story: { nav: 'Resume', card: 'The Full Story', meta: 'Resume • View & download', palette: violet },
+  moments: { nav: 'Research & Awards', card: 'Research & Awards', meta: `${achievements.length} Awards · ${research.length} Research items`, palette: crimson },
+  story: { nav: 'Resume', card: 'The Full Story', meta: 'Resume · View & download', palette: violet },
 };
